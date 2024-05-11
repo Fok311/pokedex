@@ -17,7 +17,7 @@ function App() {
         - May pass the search and type as query keys so that the data will be refetched when these values change. 
     */
     
-        const { data: pokemons = [] } = useQuery({
+        const { data: pokemons = [], isLoading, isError } = useQuery({
             queryKey: ["pokemons", search, type],
             queryFn: () => fetchPokemons(search, type),
           });
@@ -62,6 +62,8 @@ function App() {
                 - Pass the pokemons, isLoading, and isError states as props to the PokemonGrid component
             */
                 pokemons={pokemons} // Passing pokemons data
+                isLoading={isLoading} // Passing isLoading state
+                isError={isError} // Passing isError state
             />
         </div>
     );
